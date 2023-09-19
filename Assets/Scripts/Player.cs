@@ -15,11 +15,14 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        
+        float directionY = Input.GetAxisRaw("Vertical");
+        float directionX = Input.GetAxisRaw("Horizontal");
+
+        playerDirection = new Vector2(directionX, directionY).normalized;
     }
 
     private void FixedUpdate()
     {
-        
+        rb.velocity = new Vector2(playerDirection.x * playerSpeed, playerDirection.y * playerSpeed);
     }
 }
