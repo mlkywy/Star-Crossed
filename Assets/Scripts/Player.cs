@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float playerSpeed;
-    private Rigidbody2D rb;
-    private Vector2 playerDirection;
+    [SerializeField] private float _playerSpeed;
+    private Rigidbody2D _rb;
+    private Vector2 _playerDirection;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -18,11 +18,11 @@ public class Player : MonoBehaviour
         float directionY = Input.GetAxisRaw("Vertical");
         float directionX = Input.GetAxisRaw("Horizontal");
 
-        playerDirection = new Vector2(directionX, directionY).normalized;
+        _playerDirection = new Vector2(directionX, directionY).normalized;
     }
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(playerDirection.x * playerSpeed, playerDirection.y * playerSpeed);
+        _rb.velocity = new Vector2(_playerDirection.x * _playerSpeed, _playerDirection.y * _playerSpeed);
     }
 }

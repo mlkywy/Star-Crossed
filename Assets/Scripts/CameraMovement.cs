@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    [SerializeField] private float cameraSpeed;
+    [SerializeField] private float _cameraSpeed;
 
     private void Update()
     {
-        transform.position += new Vector3(cameraSpeed * Time.deltaTime, 0, 0);
+        transform.position += new Vector3(_cameraSpeed * Time.deltaTime, 0, 0);
     }
 }
