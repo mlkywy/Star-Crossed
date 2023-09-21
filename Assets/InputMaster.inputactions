@@ -1,5 +1,5 @@
 {
-    "name": "CustomInput",
+    "name": "InputMaster",
     "maps": [
         {
             "name": "Player",
@@ -342,7 +342,7 @@
                     "name": "",
                     "id": "876a0a45-4ea5-4890-9aa1-2b5783dd6664",
                     "path": "<Keyboard>/space",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
@@ -353,7 +353,7 @@
                     "name": "",
                     "id": "f9b0eb39-4ca9-4ac0-bea9-aa9841d6ac77",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
@@ -364,7 +364,7 @@
                     "name": "",
                     "id": "df60e222-6a37-4b04-9e7b-2d94f6f70619",
                     "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
