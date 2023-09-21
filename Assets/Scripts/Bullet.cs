@@ -5,11 +5,11 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _bulletSpeed = 20;
-    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Rigidbody2D _rb;
 
     private void Start()
     {
-        rb.velocity = transform.right * _bulletSpeed;
+        _rb.velocity = transform.right * _bulletSpeed;
     }
 
     private void OnTriggerEnter2D(Collider2D objectHit)

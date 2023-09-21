@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletSpeed: 30
-  rb: {fileID: 2783664334358091345}
+  _rb: {fileID: 2783664334358091345}
 --- !u!1001 &7877668427858301306
 PrefabInstance:
   m_ObjectHideFlags: 0
