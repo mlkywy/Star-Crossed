@@ -5,6 +5,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [SerializeField] private Transform _firePoint;
+    [SerializeField] private GameObject _bullet;
     private InputMaster _controls;
 
     private void Awake()
@@ -15,8 +16,7 @@ public class Weapon : MonoBehaviour
 
     private void Shoot()
     {
-        // Shooting Logic
-        
+        Instantiate(_bullet, _firePoint.position, _firePoint.rotation);
     }
 
     private void OnEnable()
