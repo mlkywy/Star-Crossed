@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SpawnBorder
   - Obstacle
+  - Enemy
   layers:
   - Default
   - TransparentFX

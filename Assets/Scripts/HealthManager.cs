@@ -29,11 +29,17 @@ public class HealthManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Decrements health by 1.
+    /// </summary>
     public static void TakeDamage()
     {
         _health -= 1;
     }
 
+    /// <summary>
+    /// Resets health to 3.
+    /// </summary>
     public static void ResetHealth()
     {
         _health = 3;

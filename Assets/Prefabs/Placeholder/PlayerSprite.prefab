@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4448792602316061251}
   - component: {fileID: 3629213714921467697}
   m_Layer: 0
-  m_Name: Drone
+  m_Name: PlayerSprite
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

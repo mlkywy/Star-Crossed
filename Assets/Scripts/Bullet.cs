@@ -12,13 +12,13 @@ public class Bullet : MonoBehaviour
         _rb.velocity = transform.right * _bulletSpeed;
     }
 
-    private void OnTriggerEnter2D(Collider2D objectHit)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (objectHit.tag != "Player")
+        if (collision.tag != "Player")
         {
-            if (objectHit.tag == "Enemy" || objectHit.tag == "Obstacle")
+            if (collision.tag == "Enemy" || collision.tag == "Obstacle")
             {
-                Destroy(objectHit.gameObject);
+                Destroy(collision.gameObject);
             }
 
             Destroy(this.gameObject);
