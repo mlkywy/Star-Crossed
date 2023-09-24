@@ -6,11 +6,11 @@ public class Obstacle : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "SpawnBorder")
+        if (collision.CompareTag("SpawnBorder"))
         {
             Destroy(this.gameObject);
         }
-        else if (collision.tag == "Player")
+        else if (collision.CompareTag("Player"))
         {
             Destroy(this.gameObject);
             HealthManager.TakeDamage();

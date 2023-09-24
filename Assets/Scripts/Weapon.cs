@@ -6,12 +6,20 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] private Transform _firePoint;
     [SerializeField] private GameObject _bullet;
-    private InputMaster _controls;
+    // private InputMaster _controls;
 
-    private void Awake()
+    // private void Awake()
+    // {
+    //     _controls = new InputMaster();
+    //     _controls.Player.Shoot.performed += ctx => Shoot();
+    // }
+
+    private void Update()
     {
-        _controls = new InputMaster();
-        _controls.Player.Shoot.performed += ctx => Shoot();
+        if (InputManager.GetInstance().GetShootPressed())
+        {
+            Shoot();
+        }
     }
 
     private void Shoot()
@@ -19,13 +27,13 @@ public class Weapon : MonoBehaviour
         Instantiate(_bullet, _firePoint.position, _firePoint.rotation);
     }
 
-    private void OnEnable()
-    {
-        _controls.Player.Enable();
-    }
+    // private void OnEnable()
+    // {
+    //     _controls.Player.Enable();
+    // }
 
-    private void OnDisable()
-    {
-        _controls.Player.Disable();
-    }
+    // private void OnDisable()
+    // {
+    //     _controls.Player.Disable();
+    // }
 }

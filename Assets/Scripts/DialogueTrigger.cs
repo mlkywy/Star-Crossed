@@ -4,13 +4,41 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
-    [Header("Visual Cue")]
     [SerializeField] private GameObject _visualCue;
-
-    private bool _playerInRange;
+    [SerializeField] private TextAsset _inkJson;
+    private bool _characterInRange;
 
     private void Awake()
     {
+        _characterInRange = false;
         _visualCue.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (_characterInRange)
+        {
+            _visualCue.SetActive(true);
+        }
+        else
+        {
+            _visualCue.SetActive(false);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Character"))
+        {
+            _characterInRange = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Character"))
+        {
+            _characterInRange = false;
+        }
     }
 }
