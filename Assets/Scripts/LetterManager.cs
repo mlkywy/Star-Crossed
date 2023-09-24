@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Ink.Runtime;
-using UnityEngine.EventSystems;
 
 public class LetterManager : MonoBehaviour
 {
@@ -127,20 +126,11 @@ public class LetterManager : MonoBehaviour
         {
             _choices[i].gameObject.SetActive(false);
         }
-
-        StartCoroutine(SelectFirstChoice());
     }
 
     public void MakeChoice(int choiceIndex)
     {
         Debug.Log("Choice made: " + choiceIndex);
         _currentStory.ChooseChoiceIndex(choiceIndex);
-    }
-
-    private IEnumerator SelectFirstChoice()
-    {
-        EventSystem.current.SetSelectedGameObject(null);
-        yield return new WaitForEndOfFrame();
-        EventSystem.current.SetSelectedGameObject(_choices[0].gameObject);
     }
 }
