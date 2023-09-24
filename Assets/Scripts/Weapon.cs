@@ -6,26 +6,17 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] private Transform _firePoint;
     [SerializeField] private GameObject _bullet;
-    private InputMaster _controls;
 
-    private void Awake()
+    private void Update()
     {
-        _controls = new InputMaster();
-        _controls.Player.Shoot.performed += ctx => Shoot();
+        if (InputManager.GetInstance().GetShootPressed() && !GameOver.GameIsOver)
+        {
+            Shoot();
+        }
     }
 
     private void Shoot()
     {
         Instantiate(_bullet, _firePoint.position, _firePoint.rotation);
-    }
-
-    private void OnEnable()
-    {
-        _controls.Player.Enable();
-    }
-
-    private void OnDisable()
-    {
-        _controls.Player.Disable();
     }
 }
