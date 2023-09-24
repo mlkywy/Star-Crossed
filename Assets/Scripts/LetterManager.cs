@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Ink.Runtime;
+using Ink.UnityIntegration;
+using UnityEngine.SceneManagement;
 
 public class LetterManager : MonoBehaviour
 {
@@ -10,23 +12,26 @@ public class LetterManager : MonoBehaviour
     [SerializeField] private GameObject _letterPanel;
     [SerializeField] private Text _letterText;
     [SerializeField] private GameObject _continueArrow;
-    [SerializeField] private GameObject _backArrow;
 
     [Header("Options UI")]
     [SerializeField] private GameObject _respondWithText;
+    [SerializeField] private GameObject _sendLetterText;
     [SerializeField] private GameObject[] _choices;
     private Text[] _choicesText;
 
+    [Header("Globals Ink File")]
+    [SerializeField] private InkFile _globalsInkFile;
+
     private Story _currentStory;
     private bool _letterIsPlaying;
-    private bool _canRereadLetter;
-    private bool _canRereadResponse;
-    private string _responsePathString;
+    private List<Choice> _currentChoices;
 
     public bool LetterIsPlaying
     {
         get { return _letterIsPlaying; }
     }
+
+    private LetterVariables _letterVariables;
 
     private static LetterManager _instance;
 
@@ -37,6 +42,8 @@ public class LetterManager : MonoBehaviour
             Debug.LogError("Found more than one Letter Manager in the scene.");
         }
         _instance = this;
+
+        _letterVariables = new LetterVariables(_globalsInkFile.filePath);
     }
 
     public static LetterManager GetInstance() 
@@ -69,36 +76,23 @@ public class LetterManager : MonoBehaviour
         {
             ContinueStory();
         }
-
-        if (InputManager.GetInstance().GetInteractPressed())
-        {
-            if (_canRereadLetter)
-            {
-                _currentStory.ChoosePathString("main");
-            }
-            
-            if (_canRereadResponse)
-            {
-                _currentStory.ChoosePathString(_responsePathString);
-            }
-            
-            ContinueStory();
-        }
     }
 
     public void EnterLetterMode(TextAsset inkJson)
     {
-        _canRereadLetter = true;
-        _canRereadResponse = false;
         _currentStory = new Story(inkJson.text);
         _letterIsPlaying = true;
         _letterPanel.SetActive(true);
+
+        _letterVariables.StartListening(_currentStory);
 
         ContinueStory();
     }
 
     private void ExitLetterMode()
     {
+        _letterVariables.StopListening(_currentStory);
+
         _letterIsPlaying = false;
         _letterPanel.SetActive(false);
         _letterText.text = string.Empty;
@@ -120,27 +114,25 @@ public class LetterManager : MonoBehaviour
 
     private void DisplayChoices()
     {
-        List<Choice> currentChoices = _currentStory.currentChoices;
+        _currentChoices = _currentStory.currentChoices;
 
-        if (currentChoices.Count > 0)
+        if (_currentChoices.Count > 0)
         {
-            _backArrow.SetActive(true);
             _continueArrow.SetActive(false);
             _respondWithText.SetActive(true);
         }
         else
         {
-            _backArrow.SetActive(false);
             _respondWithText.SetActive(false);
         }
 
-        if (currentChoices.Count > _choices.Length)
+        if (_currentChoices.Count > _choices.Length)
         {
-            Debug.LogError("More options were given than the UI can support. Number of options given: " + currentChoices.Count);
+            Debug.LogError("More options were given than the UI can support. Number of options given: " + _currentChoices.Count);
         }
 
         int index = 0;
-        foreach (Choice choice in currentChoices)
+        foreach (Choice choice in _currentChoices)
         {
             _choices[index].gameObject.SetActive(true);
             _choicesText[index].text = choice.text;
@@ -156,16 +148,28 @@ public class LetterManager : MonoBehaviour
     public void MakeChoice(int choiceIndex)
     {
         _currentStory.ChooseChoiceIndex(choiceIndex);
-        _canRereadLetter = false;
-        _canRereadResponse = true;
 
-        if (choiceIndex == 0)
+        // handle scene transition
+        if (_currentChoices[choiceIndex].text == "yes")
         {
-            _responsePathString = "option1";
+            ExitLetterMode();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
-        else if (choiceIndex == 1)
+        else if (_currentChoices[choiceIndex].text == "no")
         {
-            _responsePathString = "option2";
+            ExitLetterMode();
         }
+    }
+
+    public Ink.Runtime.Object GetVariableState(string variableName)
+    {
+        Ink.Runtime.Object variableValue = null;
+        _letterVariables.Variables.TryGetValue(variableName, out variableValue);
+        if (variableValue == null)
+        {
+            Debug.LogWarning("Ink Variable was found to be null: " + variableName);
+        }
+        
+        return variableValue;
     }
 }
