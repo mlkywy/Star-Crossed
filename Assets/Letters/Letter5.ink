@@ -1,5 +1,7 @@
 INCLUDE globals.ink
 
+~ sendLetter = false
+
 { letter4Option1 && !letter5Picked: -> letter4Option1Knot  }
 { letter4Option2 && !letter5Picked: -> letter4Option2Knot  }
 { letter4Option3 && !letter5Picked: -> letter4Option1Knot  }
@@ -29,6 +31,7 @@ Write back soon!
 === letter5Option1Knot ===
 ~ letter5Picked = true
 ~ letter5Option1 = true
+~ sendLetter = true
 RE: This letter will be about peacefulness!
 This is just more text.
     + [yes]
@@ -39,6 +42,7 @@ This is just more text.
 === letter5Option2Knot ===
 ~ letter5Picked = true
 ~ letter5Option2 = true
+~ sendLetter = true
 RE: This letter will be about anxiety!
 This is just more text.
     + [yes]
@@ -49,6 +53,7 @@ This is just more text.
 === letter5Option3Knot ===
 ~ letter5Picked = true
 ~ letter5Option3 = true
+~ sendLetter = true
 RE: This letter will be about being comforted!
 This is just more text.
     + [yes]
@@ -59,6 +64,7 @@ This is just more text.
 === letter5Option4Knot ===
 ~ letter5Picked = true
 ~ letter5Option4 = true
+~ sendLetter = true
 RE: This letter will be about feeling despair!
 This is just more text.
     + [yes]

@@ -1,5 +1,7 @@
 INCLUDE globals.ink
 
+~ sendLetter = false
+
 { letter1Option1 && !letter2Picked: -> letter1Option1Knot  }
 { letter1Option2 && !letter2Picked: -> letter1Option2Knot  }
 
@@ -27,6 +29,7 @@ Write back soon!
 === letter2Option1Knot ===
 ~ letter2Picked = true
 ~ letter2Option1 = true
+~ sendLetter = true
 RE: This letter will be about cats!
 This is just more text.
     + [yes]
@@ -37,6 +40,7 @@ This is just more text.
 === letter2Option2Knot ===
 ~ letter2Picked = true
 ~ letter2Option2 = true
+~ sendLetter = true
 RE: This letter will be about dogs!
 This is just more text.
     + [yes]
@@ -47,6 +51,7 @@ This is just more text.
 === letter2Option3Knot ===
 ~ letter2Picked = true
 ~ letter2Option3 = true
+~ sendLetter = true
 RE: This letter will be about birds!
 This is just more text.
     + [yes]
@@ -57,6 +62,7 @@ This is just more text.
 === letter2Option4Knot ===
 ~ letter2Picked = true
 ~ letter2Option4 = true
+~ sendLetter = true
 RE: This letter will be about the fish!
 This is just more text.
     + [yes]

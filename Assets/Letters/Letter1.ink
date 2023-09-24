@@ -1,5 +1,7 @@
 INCLUDE globals.ink
 
+~ sendLetter = false
+
 { letter1Option1 && letter1Picked: -> letter1Option1Knot | -> main }
 { letter1Option2 && letter1Picked: -> letter1Option2Knot | -> main }
 
@@ -14,6 +16,7 @@ Write back soon!
 === letter1Option1Knot ===
 ~ letter1Picked = true
 ~ letter1Option1 = true
+~ sendLetter = true
 RE: This letter will be about the stars!
 This is just more text.
     + [yes]
@@ -24,6 +27,7 @@ This is just more text.
 === letter1Option2Knot ===
 ~ letter1Picked = true
 ~ letter1Option2 = true
+~ sendLetter = true
 RE: This letter will be about the the moon!
 This is just more text.
     + [yes]

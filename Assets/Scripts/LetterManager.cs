@@ -80,6 +80,8 @@ public class LetterManager : MonoBehaviour
 
     public void EnterLetterMode(TextAsset inkJson)
     {
+        _sendLetterText.SetActive(false);
+        _respondWithText.SetActive(false);
         _currentStory = new Story(inkJson.text);
         _letterIsPlaying = true;
         _letterPanel.SetActive(true);
@@ -119,10 +121,23 @@ public class LetterManager : MonoBehaviour
         if (_currentChoices.Count > 0)
         {
             _continueArrow.SetActive(false);
-            _respondWithText.SetActive(true);
+
+            bool sendLetter = ((Ink.Runtime.BoolValue) GetVariableState("sendLetter")).value;
+            if (sendLetter)
+            {
+                Debug.Log("IN HERE!");
+                _sendLetterText.SetActive(true);
+                _respondWithText.SetActive(false);
+            }
+            else
+            {
+                _sendLetterText.SetActive(false);
+                _respondWithText.SetActive(true);
+            }
         }
         else
         {
+            _sendLetterText.SetActive(false);
             _respondWithText.SetActive(false);
         }
 
