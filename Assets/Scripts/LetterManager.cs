@@ -125,7 +125,6 @@ public class LetterManager : MonoBehaviour
             bool sendLetter = ((Ink.Runtime.BoolValue) GetVariableState("sendLetter")).value;
             if (sendLetter)
             {
-                Debug.Log("IN HERE!");
                 _sendLetterText.SetActive(true);
                 _respondWithText.SetActive(false);
             }
