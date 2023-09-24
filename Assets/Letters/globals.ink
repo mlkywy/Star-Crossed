@@ -19,3 +19,18 @@ VAR letter3Option4 = false
 
 VAR letter3Picked = false
 
+VAR letter4Option1 = false
+VAR letter4Option2 = false
+VAR letter4Option3 = false
+VAR letter4Option4 = false
+
+VAR letter4Picked = false
+
+VAR letter5Option1 = false
+VAR letter5Option2 = false
+VAR letter5Option3 = false
+VAR letter5Option4 = false
+
+VAR letter5Picked = false
+
+
