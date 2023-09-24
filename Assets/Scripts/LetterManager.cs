@@ -9,6 +9,8 @@ public class LetterManager : MonoBehaviour
     [Header("Letter UI")]
     [SerializeField] private GameObject _letterPanel;
     [SerializeField] private Text _letterText;
+    [SerializeField] private GameObject _continueArrow;
+    [SerializeField] private GameObject _backArrow;
 
     [Header("Options UI")]
     [SerializeField] private GameObject _respondWithText;
@@ -17,6 +19,9 @@ public class LetterManager : MonoBehaviour
 
     private Story _currentStory;
     private bool _letterIsPlaying;
+    private bool _canRereadLetter;
+    private bool _canRereadResponse;
+    private string _responsePathString;
 
     public bool LetterIsPlaying
     {
@@ -64,10 +69,27 @@ public class LetterManager : MonoBehaviour
         {
             ContinueStory();
         }
+
+        if (InputManager.GetInstance().GetInteractPressed())
+        {
+            if (_canRereadLetter)
+            {
+                _currentStory.ChoosePathString("main");
+            }
+            
+            if (_canRereadResponse)
+            {
+                _currentStory.ChoosePathString(_responsePathString);
+            }
+            
+            ContinueStory();
+        }
     }
 
     public void EnterLetterMode(TextAsset inkJson)
     {
+        _canRereadLetter = true;
+        _canRereadResponse = false;
         _currentStory = new Story(inkJson.text);
         _letterIsPlaying = true;
         _letterPanel.SetActive(true);
@@ -86,6 +108,7 @@ public class LetterManager : MonoBehaviour
     {
         if (_currentStory.canContinue)
         {
+            _continueArrow.SetActive(true);
             _letterText.text = _currentStory.Continue();
             DisplayChoices();
         }
@@ -98,14 +121,16 @@ public class LetterManager : MonoBehaviour
     private void DisplayChoices()
     {
         List<Choice> currentChoices = _currentStory.currentChoices;
-        Debug.Log("Current Choices count: " + currentChoices.Count);
 
         if (currentChoices.Count > 0)
         {
+            _backArrow.SetActive(true);
+            _continueArrow.SetActive(false);
             _respondWithText.SetActive(true);
         }
         else
         {
+            _backArrow.SetActive(false);
             _respondWithText.SetActive(false);
         }
 
@@ -130,7 +155,17 @@ public class LetterManager : MonoBehaviour
 
     public void MakeChoice(int choiceIndex)
     {
-        Debug.Log("Choice made: " + choiceIndex);
         _currentStory.ChooseChoiceIndex(choiceIndex);
+        _canRereadLetter = false;
+        _canRereadResponse = true;
+
+        if (choiceIndex == 0)
+        {
+            _responsePathString = "option1";
+        }
+        else if (choiceIndex == 1)
+        {
+            _responsePathString = "option2";
+        }
     }
 }
