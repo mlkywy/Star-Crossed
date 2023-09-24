@@ -9,7 +9,7 @@ public class Weapon : MonoBehaviour
 
     private void Update()
     {
-        if (InputManager.GetInstance().GetShootPressed())
+        if (InputManager.GetInstance().GetShootPressed() && !GameOver.GameIsOver)
         {
             Shoot();
         }

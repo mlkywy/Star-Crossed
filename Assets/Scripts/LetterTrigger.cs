@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueTrigger : MonoBehaviour
+public class LetterTrigger : MonoBehaviour
 {
     [SerializeField] private GameObject _visualCue;
     [SerializeField] private TextAsset _inkJson;
@@ -16,12 +16,12 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Update()
     {
-        if (_characterInRange)
+        if (_characterInRange && !LetterManager.GetInstance().LetterIsPlaying)
         {
             _visualCue.SetActive(true);
             if (InputManager.GetInstance().GetInteractPressed())
             {
-                Debug.Log(_inkJson.text);
+                LetterManager.GetInstance().EnterLetterMode(_inkJson);
             }
         }
         else

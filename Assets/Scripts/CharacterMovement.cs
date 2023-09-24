@@ -22,12 +22,17 @@ public class CharacterMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (LetterManager.GetInstance().LetterIsPlaying)
+        {
+            return;
+        }
+
         _rb.velocity = new Vector2(_directionX * _characterSpeed, _rb.velocity.y);
     }
 
     private void Flip()
     {
-        if (_isFacingRight && _directionX < 0f || !_isFacingRight && _directionX > 0f)
+        if ((_isFacingRight && _directionX < 0f || !_isFacingRight && _directionX > 0f) && !LetterManager.GetInstance().LetterIsPlaying)
         {
             _isFacingRight = !_isFacingRight;
             Vector3 localScale = transform.localScale;
