@@ -19,6 +19,10 @@ public class DialogueTrigger : MonoBehaviour
         if (_characterInRange)
         {
             _visualCue.SetActive(true);
+            if (InputManager.GetInstance().GetInteractPressed())
+            {
+                Debug.Log(_inkJson.text);
+            }
         }
         else
         {
