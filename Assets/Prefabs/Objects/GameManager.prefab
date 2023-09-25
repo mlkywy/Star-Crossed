@@ -336,6 +336,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameOverPanel: {fileID: 0}
+  _selectSound: {fileID: 8300000, guid: 2d62553c923b0b543a80353a920d422e, type: 3}
+  _backSound: {fileID: 8300000, guid: 4bf05c742b730e74bbfbe2cfd31106e2, type: 3}
+  _moveBetweenSound: {fileID: 8300000, guid: 6991265607553b8468343410f243b579, type: 3}
 --- !u!114 &7866009785791767933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,7 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentTime: 0
-  _startingTime: 2
+  _startingTime: 10
   _countdownTimerText: {fileID: 0}
 --- !u!1 &7445768313303554113
 GameObject:
