@@ -352,7 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentTime: 0
-  _startingTime: 10
+  _startingTime: 60
   _countdownTimerText: {fileID: 0}
 --- !u!1 &7445768313303554113
 GameObject:
