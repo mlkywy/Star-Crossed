@@ -9,10 +9,11 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
-        if (_instance != null)
+        if (_instance != null && _instance != this)
         {
             Debug.LogWarning("Found more than one Sound Manager in the scene.");
             Destroy(gameObject);
+            return;
         }
         _instance = this;
         DontDestroyOnLoad(this);
