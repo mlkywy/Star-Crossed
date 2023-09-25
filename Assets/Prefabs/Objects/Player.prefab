@@ -91,6 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _firePoint: {fileID: 4505020706057484121}
   _bullet: {fileID: 4587985101691681726, guid: 74460cc0373f44d4eb7a385cc261a4c5, type: 3}
+  _bulletSound: {fileID: 8300000, guid: 68bbb52fb99f32e4288622070b1ae3e4, type: 3}
 --- !u!60 &6761320108031680044
 PolygonCollider2D:
   m_ObjectHideFlags: 0

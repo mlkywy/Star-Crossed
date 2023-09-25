@@ -7,6 +7,7 @@ public class EnemyBullet : MonoBehaviour
     [SerializeField] private float _bulletSpeed = 20;
     private Transform _player;
     private Vector2 _target;
+    [SerializeField] private AudioClip _hitSound;
 
     private void Start()
     {
@@ -23,6 +24,7 @@ public class EnemyBullet : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            SoundManager.GetInstance().PlaySound(_hitSound);
             Destroy(this.gameObject);
             HealthManager.TakeDamage();
         }

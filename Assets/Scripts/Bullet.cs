@@ -6,6 +6,8 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _bulletSpeed = 20;
     [SerializeField] private Rigidbody2D _rb;
+    [SerializeField] private AudioClip _hitSound;
+
 
     private void Start()
     {
@@ -18,6 +20,7 @@ public class Bullet : MonoBehaviour
         {
             if (collision.CompareTag("Enemy") || collision.CompareTag("Obstacle"))
             {
+                SoundManager.GetInstance().PlaySound(_hitSound);
                 Destroy(collision.gameObject);
             }
 

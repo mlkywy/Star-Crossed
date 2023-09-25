@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletSpeed: 10
+  _hitSound: {fileID: 8300000, guid: 84e03dbc38d2008478a9740c1a96d9d7, type: 3}
 --- !u!50 &8663652950702591334
 Rigidbody2D:
   serializedVersion: 4
