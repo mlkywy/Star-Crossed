@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Character
   - SoundManager
+  - FinalScene
   layers:
   - Default
   - TransparentFX
