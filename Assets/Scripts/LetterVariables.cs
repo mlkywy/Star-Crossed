@@ -5,6 +5,8 @@ using Ink.Runtime;
 
 public class LetterVariables 
 {
+    private Story globalVariablesStory;
+    private const string _saveVariablesKey = "INK_VARIABLES";
     private Dictionary<string, Ink.Runtime.Object> _variables;
 
     public Dictionary<string, Ink.Runtime.Object> Variables
@@ -15,7 +17,14 @@ public class LetterVariables
     public LetterVariables(TextAsset loadGlobalsJson)
     {
         // compile the story
-        Story globalVariablesStory = new Story(loadGlobalsJson.text);
+        globalVariablesStory = new Story(loadGlobalsJson.text);
+
+        // if we have saved data, load it
+        if (PlayerPrefs.HasKey(_saveVariablesKey))
+        {
+            string jsonState = PlayerPrefs.GetString(_saveVariablesKey);
+            globalVariablesStory.state.LoadJson(jsonState);
+        }
 
         // initialize the dictionary
         _variables = new Dictionary<string, Ink.Runtime.Object>();
@@ -24,6 +33,16 @@ public class LetterVariables
             Ink.Runtime.Object value = globalVariablesStory.variablesState.GetVariableWithName(name);
             _variables.Add(name, value);
             Debug.Log("Initialized global letter variable: " + name + " = " + value);
+        }
+    }
+
+    public void SaveVariables()
+    {
+        if (globalVariablesStory != null)
+        {
+            // load the current state of all of our variables to the globals story
+            VariablesToStory(globalVariablesStory);
+            PlayerPrefs.SetString(_saveVariablesKey, globalVariablesStory.state.ToJson());
         }
     }
 

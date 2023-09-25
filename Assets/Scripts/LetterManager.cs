@@ -97,6 +97,7 @@ public class LetterManager : MonoBehaviour
         _letterIsPlaying = false;
         _letterPanel.SetActive(false);
         _letterText.text = string.Empty;
+        SaveVariableState();
     }
 
     private void ContinueStory()
@@ -184,5 +185,13 @@ public class LetterManager : MonoBehaviour
         }
         
         return variableValue;
+    }
+
+    public void SaveVariableState()
+    {
+        if (_letterVariables != null)
+        {
+            _letterVariables.SaveVariables();
+        }
     }
 }
