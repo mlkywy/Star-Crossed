@@ -308,72 +308,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1899951446854311843, guid: 33083b93e055e484cbd082eb83e69dfc, type: 3}
   m_PrefabInstance: {fileID: 7613664093344004816}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1668707491
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1668707493}
-  - component: {fileID: 1668707492}
-  m_Layer: 0
-  m_Name: LetterManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1668707492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1668707491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bafb1442cadbaf42be486809f01ff6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _letterPanel: {fileID: 822668780488132970}
-  _letterText: {fileID: 2785330278999454270}
-  _continueArrow: {fileID: 6168917206605028283}
-  _respondWithText: {fileID: 233085722177289001}
-  _sendLetterText: {fileID: 1113010569}
-  _choices:
-  - {fileID: 1093084094137852895}
-  - {fileID: 7282133357755355016}
-  _globalsInkFile:
-    compileAutomatically: 0
-    inkAsset: {fileID: 102900000, guid: 15989420e6ab17d438f4870e0ec88944, type: 3}
-    jsonAssetDirectory: {fileID: 0}
-    jsonAsset: {fileID: 0}
-    unhandledCompileErrors: []
-    errors: []
-    warnings: []
-    todos: []
-    parents: []
-    masterInkAssets: []
-    masterInkAsset: {fileID: 0}
-    includePaths: []
-    includes: []
---- !u!4 &1668707493
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1668707491}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 80, y: 88.57001, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2073913355
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -452,6 +386,23 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1398621591748488959, guid: 33083b93e055e484cbd082eb83e69dfc, type: 3}
   m_PrefabInstance: {fileID: 7613664093344004816}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &540876009850902139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8255044126687760749}
+  - component: {fileID: 1426568023072419738}
+  m_Layer: 0
+  m_Name: LetterManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &822668780488132970 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6032407263066626257, guid: 33083b93e055e484cbd082eb83e69dfc, type: 3}
@@ -519,6 +470,27 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3362604890448048074, guid: 33083b93e055e484cbd082eb83e69dfc, type: 3}
   m_PrefabInstance: {fileID: 7613664093344004816}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1426568023072419738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540876009850902139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bafb1442cadbaf42be486809f01ff6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _letterPanel: {fileID: 822668780488132970}
+  _letterText: {fileID: 2785330278999454270}
+  _continueArrow: {fileID: 6168917206605028283}
+  _respondWithText: {fileID: 233085722177289001}
+  _sendLetterText: {fileID: 1113010569}
+  _choices:
+  - {fileID: 1093084094137852895}
+  - {fileID: 7282133357755355016}
+  _loadGlobalsJson: {fileID: 4900000, guid: 3a6ca814ca3f9114eb736031f828c766, type: 3}
 --- !u!1001 &1635665930316020225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -808,7 +780,7 @@ PrefabInstance:
     - target: {fileID: 5147304410063042933, guid: 33083b93e055e484cbd082eb83e69dfc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1668707492}
+      objectReference: {fileID: 1426568023072419738}
     - target: {fileID: 6032407263066626257, guid: 33083b93e055e484cbd082eb83e69dfc, type: 3}
       propertyPath: m_Name
       value: LetterPanel
@@ -896,18 +868,33 @@ PrefabInstance:
     - target: {fileID: 8941090411340715861, guid: 33083b93e055e484cbd082eb83e69dfc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1668707492}
+      objectReference: {fileID: 1426568023072419738}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33083b93e055e484cbd082eb83e69dfc, type: 3}
+--- !u!4 &8255044126687760749
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540876009850902139}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 80, y: 88.57001, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1635665930316020225}
-  - {fileID: 1668707493}
+  - {fileID: 8255044126687760749}
   - {fileID: 6852933750686698989}
   - {fileID: 2073913355}
   - {fileID: 3396238458930041106}

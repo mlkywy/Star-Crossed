@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Ink.Runtime;
-using System.IO;
 
 public class LetterVariables 
 {
@@ -13,12 +12,10 @@ public class LetterVariables
         get { return _variables; }
     }
     
-    public LetterVariables(string globalsFilePath)
+    public LetterVariables(TextAsset loadGlobalsJson)
     {
         // compile the story
-        string inkFileContents = File.ReadAllText(globalsFilePath);
-        Ink.Compiler compiler = new Ink.Compiler(inkFileContents);
-        Story globalVariablesStory = compiler.Compile();
+        Story globalVariablesStory = new Story(loadGlobalsJson.text);
 
         // initialize the dictionary
         _variables = new Dictionary<string, Ink.Runtime.Object>();
