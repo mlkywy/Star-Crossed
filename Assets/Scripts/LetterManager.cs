@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Ink.Runtime;
-using Ink.UnityIntegration;
 using UnityEngine.SceneManagement;
 
 public class LetterManager : MonoBehaviour
@@ -19,8 +18,8 @@ public class LetterManager : MonoBehaviour
     [SerializeField] private GameObject[] _choices;
     private Text[] _choicesText;
 
-    [Header("Globals Ink File")]
-    [SerializeField] private InkFile _globalsInkFile;
+    [Header("Load Globals JSON")]
+    [SerializeField] private TextAsset _loadGlobalsJson;
 
     private Story _currentStory;
     private bool _letterIsPlaying;
@@ -43,7 +42,7 @@ public class LetterManager : MonoBehaviour
         }
         _instance = this;
 
-        _letterVariables = new LetterVariables(_globalsInkFile.filePath);
+        _letterVariables = new LetterVariables(_loadGlobalsJson);
     }
 
     public static LetterManager GetInstance() 
@@ -98,6 +97,7 @@ public class LetterManager : MonoBehaviour
         _letterIsPlaying = false;
         _letterPanel.SetActive(false);
         _letterText.text = string.Empty;
+        SaveVariableState();
     }
 
     private void ContinueStory()
@@ -185,5 +185,13 @@ public class LetterManager : MonoBehaviour
         }
         
         return variableValue;
+    }
+
+    public void SaveVariableState()
+    {
+        if (_letterVariables != null)
+        {
+            _letterVariables.SaveVariables();
+        }
     }
 }

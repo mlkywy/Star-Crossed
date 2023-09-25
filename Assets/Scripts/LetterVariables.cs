@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Ink.Runtime;
-using System.IO;
 
 public class LetterVariables 
 {
+    private Story globalVariablesStory;
+    private const string _saveVariablesKey = "INK_VARIABLES";
     private Dictionary<string, Ink.Runtime.Object> _variables;
 
     public Dictionary<string, Ink.Runtime.Object> Variables
@@ -13,12 +14,17 @@ public class LetterVariables
         get { return _variables; }
     }
     
-    public LetterVariables(string globalsFilePath)
+    public LetterVariables(TextAsset loadGlobalsJson)
     {
         // compile the story
-        string inkFileContents = File.ReadAllText(globalsFilePath);
-        Ink.Compiler compiler = new Ink.Compiler(inkFileContents);
-        Story globalVariablesStory = compiler.Compile();
+        globalVariablesStory = new Story(loadGlobalsJson.text);
+
+        // if we have saved data, load it
+        if (PlayerPrefs.HasKey(_saveVariablesKey))
+        {
+            string jsonState = PlayerPrefs.GetString(_saveVariablesKey);
+            globalVariablesStory.state.LoadJson(jsonState);
+        }
 
         // initialize the dictionary
         _variables = new Dictionary<string, Ink.Runtime.Object>();
@@ -27,6 +33,16 @@ public class LetterVariables
             Ink.Runtime.Object value = globalVariablesStory.variablesState.GetVariableWithName(name);
             _variables.Add(name, value);
             Debug.Log("Initialized global letter variable: " + name + " = " + value);
+        }
+    }
+
+    public void SaveVariables()
+    {
+        if (globalVariablesStory != null)
+        {
+            // load the current state of all of our variables to the globals story
+            VariablesToStory(globalVariablesStory);
+            PlayerPrefs.SetString(_saveVariablesKey, globalVariablesStory.state.ToJson());
         }
     }
 

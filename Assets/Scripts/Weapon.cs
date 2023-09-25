@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] private Transform _firePoint;
     [SerializeField] private GameObject _bullet;
+    [SerializeField] private AudioClip _bulletSound;
 
     private void Update()
     {
@@ -18,5 +19,6 @@ public class Weapon : MonoBehaviour
     private void Shoot()
     {
         Instantiate(_bullet, _firePoint.position, _firePoint.rotation);
+        SoundManager.GetInstance().PlaySound(_bulletSound);
     }
 }
