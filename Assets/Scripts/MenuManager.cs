@@ -14,6 +14,7 @@ public class MenuManager : MonoBehaviour
 
     public void StartGame()
     {
+        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("Level 1-0");
     }
 
