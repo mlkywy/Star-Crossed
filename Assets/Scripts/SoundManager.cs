@@ -9,15 +9,15 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
-        if (_instance != null && _instance != this)
+        if (_instance != null)
         {
             Debug.LogWarning("Found more than one Sound Manager in the scene.");
             Destroy(gameObject);
             return;
         }
+        
         _instance = this;
         DontDestroyOnLoad(this);
-
         _source = GetComponent<AudioSource>();
     }
 
