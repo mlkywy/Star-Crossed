@@ -12,6 +12,7 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     private Vector2 _moveDirection = Vector2.zero;
+    private bool _movePressed = false;
     private bool _interactPressed = false;
     private bool _submitPressed = false;
     private bool _shootPressed = false;
@@ -38,10 +39,12 @@ public class InputManager : MonoBehaviour
         if (context.performed)
         {
             _moveDirection = context.ReadValue<Vector2>();
+            _movePressed = true;
         }
         else if (context.canceled)
         {
             _moveDirection = context.ReadValue<Vector2>();
+            _movePressed = false;
         } 
     }
 
@@ -101,6 +104,14 @@ public class InputManager : MonoBehaviour
     // for any of the below 'Get' methods, if we're getting it then we're also using it,
     // which means we should set it to false so that it can't be used again until actually
     // pressed again.
+
+    public bool GetMovePressed() 
+    {
+        bool result = _movePressed;
+        _movePressed = false;
+        return result;
+    }
+
 
     public bool GetInteractPressed() 
     {
