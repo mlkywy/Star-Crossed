@@ -263,7 +263,8 @@ GameObject:
   - component: {fileID: 5242026932567230917}
   - component: {fileID: 3665593418354672069}
   - component: {fileID: 5465988787404182024}
-  - component: {fileID: 6272015856992307837}
+  - component: {fileID: 2324815107325532181}
+  - component: {fileID: 7866009785791767933}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -322,7 +323,7 @@ MonoBehaviour:
   - {fileID: 1771375065097294041}
   - {fileID: 1743896291901820379}
   - {fileID: 803852561817738718}
---- !u!114 &6272015856992307837
+--- !u!114 &2324815107325532181
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -335,6 +336,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameOverPanel: {fileID: 0}
+--- !u!114 &7866009785791767933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5663207640389948608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69cc54335a1c072428ae4d48788d1174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentTime: 0
+  _startingTime: 60
+  _countdownTimerText: {fileID: 0}
 --- !u!1 &7445768313303554113
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,13 +589,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 5242026932567230917}
     m_Modifications:
     - target: {fileID: 345623574135026052, guid: 20cbefbe4964934469da8d7e0357f44e, type: 3}
+      propertyPath: _timeBetweenSpawn
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 345623574135026052, guid: 20cbefbe4964934469da8d7e0357f44e, type: 3}
       propertyPath: _obstacles.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 345623574135026052, guid: 20cbefbe4964934469da8d7e0357f44e, type: 3}
       propertyPath: _obstacles.Array.data[2]
       value: 
-      objectReference: {fileID: 4885759663822840706, guid: adfa3b4454474e44f867759b83f23150, type: 3}
+      objectReference: {fileID: 7359546926545903872, guid: 05492f9b1902b2349b47c78708772921, type: 3}
     - target: {fileID: 1218276159838088113, guid: 20cbefbe4964934469da8d7e0357f44e, type: 3}
       propertyPath: m_Name
       value: SpawnPoint

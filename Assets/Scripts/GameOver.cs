@@ -31,14 +31,20 @@ public class GameOver : MonoBehaviour
 
     public void RestartLevel()
     {
-        _gameIsOver = false;
-        HealthManager.ResetHealth();
-        Time.timeScale = 1;
+        UnfreezeGame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void ReturnToMenu()
     {
+        UnfreezeGame();
         SceneManager.LoadScene("Main Menu");
+    }
+
+    private void UnfreezeGame()
+    {
+        _gameIsOver = false;
+        HealthManager.ResetHealth();
+        Time.timeScale = 1;
     }
 }
