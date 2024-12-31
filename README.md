@@ -8,7 +8,7 @@
     <br/>
     <a href="https://mlkywy.itch.io/star-crossed">PLAY GAME</a> 
     |
-    <a href="https://github.com/mlkywy/gbjam11/tree/main/Assets/Scripts">SCRIPTS</a>
+    <a href="https://github.com/mlkywy/Star-Crossed/tree/main/Assets/Scripts">SCRIPTS</a>
   </p>
 </p>
 
